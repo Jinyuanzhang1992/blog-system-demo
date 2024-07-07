@@ -1,0 +1,60 @@
+type Comment {
+  author: User!
+  c_id: ID!
+  content: String!
+  post: Post
+}
+
+type Mutation {
+  addComment(author: String!, content: String!, post: String!): Comment!
+  addPost(author: String!, content: String!, title: String!): Post!
+  addUser(email: String!, name: String!): User!
+  deleteComment(id: String!): Comment!
+  deletePost(id: String!): Post!
+  deleteUser(id: String!): User!
+  updateComment(
+    author: String
+    content: String
+    id: String!
+    post: String
+  ): Comment!
+  updatePost(
+    author: String
+    comment: String
+    content: String
+    id: String!
+    title: String
+  ): Post!
+  updateUser(email: String, id: String!, name: String, posts: Float): User!
+}
+
+type Post {
+  author: User!
+  comment: Comment
+  content: String!
+  p_id: ID!
+  title: String!
+}
+
+type Query {
+  getComments: [Comment!]!
+  getPosts: [Post!]!
+  getUsers: [User!]!
+}
+
+type Subscription {
+  deletedPost: Post!
+  deletedUser: User!
+  newComment: Comment!
+  newPost: Post!
+  newUser: User!
+  updatedPost: Post!
+  updatedUser: User!
+}
+
+type User {
+  email: String!
+  name: String!
+  posts: Post
+  u_id: ID!
+}

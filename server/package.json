@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node --trace-deprecation dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "apollo-server": "^3.13.0",
+    "apollo-server-express": "^3.13.0",
+    "class-validator": "^0.14.1",
+    "dataloader": "^2.2.2",
+    "eventemitter3": "^5.0.1",
+    "express": "^4.19.2",
+    "graphql": "^16.9.0",
+    "graphql-subscriptions": "^2.0.0",
+    "graphql-yoga": "^5.6.0",
+    "pg": "^8.12.0",
+    "reflect-metadata": "^0.2.2",
+    "subscriptions-transport-ws": "^0.11.0",
+    "type-graphql": "^2.0.0-rc.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "@types/pg": "^8.11.6",
+    "@types/ws": "^8.5.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}

@@ -1,0 +1,104 @@
+import {
+  Box,
+  Paper,
+  TextField,
+  Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
+import { useState } from "react";
+import { SelectChangeEvent } from "@mui/material/Select";
+
+const AddPostForm: React.FC<{
+  setNewPost: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setAuthor: (authorId: string) => void;
+}> = ({ setNewPost, setAuthor }) => {
+  const [authorId, setAuthorId] = useState("");
+  const [open, setOpen] = useState(false);
+
+  // console.log("author: ", author);
+  // console.log("title: ", title);
+  // console.log("content: ", content);
+
+  const handleChange = (event: SelectChangeEvent<typeof authorId>) => {
+    const authorId = event.target.value as string;
+    setAuthorId(authorId);
+    setAuthor(authorId);
+  };
+
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewPost(event);
+  };
+
+  const handleContentChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNewPost(event);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  return (
+    <Paper
+      elevation={3}
+      sx={{ p: 2, mb: 3 }}
+      className="flex flex-col items-center w-full"
+    >
+      <Typography variant="h6" gutterBottom>
+        Add New Post
+      </Typography>
+      <Box
+        sx={{ width: "100%", display: "flex", flexDirection: "column", gap: 2 }}
+      >
+        <TextField
+          id="title-input"
+          required
+          label="Title"
+          variant="outlined"
+          fullWidth
+          name="title"
+          onChange={handleTitleChange}
+        />
+        <TextField
+          id="content-input"
+          required
+          label="Content"
+          variant="outlined"
+          fullWidth
+          multiline
+          rows={5}
+          name="content"
+          onChange={handleContentChange}
+        />
+        <FormControl>
+          <InputLabel id="demo-controlled-open-select-label">Author</InputLabel>
+          <Select
+            labelId="demo-controlled-open-select-label"
+            id="demo-controlled-open-select"
+            open={open}
+            onClose={handleClose}
+            onOpen={handleOpen}
+            value={authorId}
+            label="Author"
+            onChange={handleChange}
+          >
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"2"}>Allen</MenuItem>
+            <MenuItem value={"3"}>David</MenuItem>
+            <MenuItem value={"1"}>Paul</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+    </Paper>
+  );
+};
+
+export default AddPostForm;
